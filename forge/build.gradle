@@ -26,7 +26,7 @@ apply plugin: 'com.modrinth.minotaur'
 archivesBaseName = "${mod_id}-forge"
 
 minecraft {
-    mappings channel: 'parchment', version: "${parchment_mc_version}-${parchment_version}-${minecraft_version}"
+    mappings channel: 'official', version: project.minecraft_version
     
     if (project.hasProperty('forge_ats_enabled') && project.findProperty('forge_ats_enabled').toBoolean()) {
         // This location is hardcoded in Forge and can not be changed.
@@ -171,7 +171,7 @@ curseforge {
 }
 
 modrinth {
-    token = findProperty('modrinthKey') ?: 0
+    token = findProperty('modrinthKey') ?: ""
     projectId = "${modrinth_id}"
     versionName = getArchivesBaseName() + "-" + getVersion()
     versionType = "${release_type}"
